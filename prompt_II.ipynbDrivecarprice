@@ -1,0 +1,1555 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/junaidkhan37/DriveCarPrice/blob/main/prompt_II.ipynbDrivecarprice\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "m3v9mQtPHYTj"
+      },
+      "source": [
+        "# What drives the price of a car?\n",
+        "\n",
+        "![](images/kurt.jpeg)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "RtFLxIZxHYTo"
+      },
+      "source": [
+        "**OVERVIEW**\n",
+        "\n",
+        "In this application, you will explore a dataset from Kaggle. The original dataset contained information on 3 million used cars. The provided dataset contains information on 426K cars to ensure speed of processing.  Your goal is to understand what factors make a car more or less expensive.  As a result of your analysis, you should provide clear recommendations to your client -- a used car dealership -- as to what consumers value in a used car."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "QQ6HhBvBHYTp"
+      },
+      "source": [
+        "### CRISP-DM Framework\n",
+        "\n",
+        "<center>\n",
+        "    <img src = images/crisp.png width = 50%/>\n",
+        "</center>\n",
+        "\n",
+        "\n",
+        "To frame the task, throughout our practical applications, we will refer back to a standard process in industry for data projects called CRISP-DM.  This process provides a framework for working through a data problem.  Your first step in this application will be to read through a brief overview of CRISP-DM [here](https://mo-pcco.s3.us-east-1.amazonaws.com/BH-PCMLAI/module_11/readings_starter.zip).  After reading the overview, answer the questions below."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "qzESdC8VHYTp"
+      },
+      "source": [
+        "### Business Understanding\n",
+        "\n",
+        "From a business perspective, we are tasked with identifying key drivers for used car prices.  In the CRISP-DM overview, we are asked to convert this business framing to a data problem definition.  Using a few sentences, reframe the task as a data task with the appropriate technical vocabulary."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "From a data science perspective, the task is to model used car prices as a dependent variable and analyze how they are influenced by a set of explanatory features contained in the dataset, such as vehicle age, mileage, manufacturer, model, condition, and fuel type. This constitutes a supervised regression problem, where historical vehicle listings with known prices are used to train and evaluate predictive models. The goal is to quantify feature importance and assess each variable’s contribution to price variation, enabling data-driven identification of the primary drivers of used car pricing.\n"
+      ],
+      "metadata": {
+        "id": "B1Mhb_VAICTZ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "48IaR_yZHYTq"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "5fUXNOVkHYTq"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "3Ut_9GhLHYTr"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "guZli2ClHYTr"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "G26ud0elHYTr"
+      },
+      "source": [
+        "### Data Understanding\n",
+        "\n",
+        "After considering the business understanding, we want to get familiar with our data.  Write down some steps that you would take to get to know the dataset and identify any quality issues within.  Take time to get to know the dataset and explore what information it contains and how this could be used to inform your business understanding."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "In the Data Understanding phase of CRISP-DM, the objective is to explore the dataset in depth, assess its suitability for the business objective, and identify potential data quality issues before modeling. The following steps would be taken:\n",
+        "1) Initial Data Exploration\n",
+        "Begin by reviewing the dataset’s structure, including the number of records, features, and data types. Examine column definitions to understand what each variable represents (e.g., price, mileage, year, manufacturer, condition) and how these attributes relate to used car pricing from a business perspective.\n",
+        "2) Descriptive Statistics and Distribution Analysis\n",
+        "Generate summary statistics for numerical variables such as price, mileage, and vehicle age to understand their ranges, central tendencies, and variability. Visualize distributions to detect skewness, outliers, or unrealistic values (e.g., extremely low prices or unusually high mileage), which may indicate data entry errors or atypical listings.\n",
+        "3) Missing Value and Completeness Assessment\n",
+        "Identify missing or null values across features and evaluate their extent and patterns. Determine whether missingness is random or systematic (for example, condition missing more often for older vehicles), as this impacts decisions on imputation, feature exclusion, or business interpretation.\n",
+        "4) Categorical Feature Review\n",
+        "Examine categorical variables such as manufacturer, model, fuel type, and transmission for inconsistencies, high cardinality, or rare categories. Standardizing labels and grouping infrequent categories may be necessary to ensure meaningful analysis and stable model performance.\n",
+        "5) Data Consistency and Validity Checks\n",
+        "Validate logical relationships within the data, such as ensuring vehicle year aligns with mileage and price, and confirming that numerical values fall within realistic bounds. Inconsistencies here may distort insights into pricing drivers if not addressed.\n",
+        "6) Preliminary Relationship Analysis\n",
+        "Conduct exploratory analyses to observe initial relationships between price and key predictors (e.g., price vs. mileage or age). These insights help validate business assumptions and guide feature selection for later modeling phases.\n",
+        "\n",
+        "Through these steps, the dataset can be thoroughly understood, data quality issues can be identified early, and the foundation can be established for translating raw vehicle data into meaningful insights about the drivers of used car prices."
+      ],
+      "metadata": {
+        "id": "_9YOlNGRI_xo"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "Yxb-TZOtHYTs"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "ubdxu3mtHYTs"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "DYr9JyC8HYTs"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "s9GDU6h0HYTs"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "hVt5KTS-HYTt"
+      },
+      "source": [
+        "### Data Preparation\n",
+        "\n",
+        "After our initial exploration and fine-tuning of the business understanding, it is time to construct our final dataset prior to modeling.  Here, we want to make sure to handle any integrity issues and cleaning, the engineering of new features, any transformations that we believe should happen (scaling, logarithms, normalization, etc.), and general preparation for modeling with `sklearn`."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "In the Data Preparation phase of CRISP-DM, the focus shifts to transforming the raw dataset into a clean, structured, and model-ready form suitable for use with machine learning algorithms such as those in scikit-learn. The following steps would be undertaken:\n",
+        "\n",
+        "1)Data Cleaning and Integrity Handling\n",
+        "Address identified data quality issues by removing duplicate records, correcting inconsistent categorical labels, and handling missing values through appropriate strategies such as imputation or exclusion. Outliers in variables like price or mileage should be carefully evaluated and either capped, transformed, or removed if they are deemed erroneous or non-representative.\n",
+        "\n",
+        "2)Feature Selection and Engineering\n",
+        "\n",
+        "Select relevant variables that are most likely to influence used car prices based on business insight and exploratory analysis. Engineer new features to improve predictive power, such as calculating vehicle age from model year, mileage-per-year as a usage intensity metric, or grouping rare manufacturers and models into broader categories.\n",
+        "\n",
+        "3)Data Transformation and Scaling\n",
+        "\n",
+        "Apply transformations to variables with skewed distributions, such as a logarithmic transformation on price or mileage, to stabilize variance and improve model performance. Numerical features should be scaled or normalized (e.g., using standardization or min–max scaling) to ensure compatibility with algorithms that are sensitive to feature magnitude.\n",
+        "\n",
+        "4)Encoding Categorical Variables\n",
+        "\n",
+        "Convert categorical features (such as fuel type, transmission, or condition) into numerical representations using techniques like one-hot encoding or ordinal encoding, depending on the nature of the variable and the modeling approach.\n",
+        "\n",
+        "By completing these steps, the final dataset will be robust, interpretable, and optimized for modeling, providing a strong foundation for accurately identifying the key drivers of used car prices"
+      ],
+      "metadata": {
+        "id": "CkzpsOHq0LkG"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "from sklearn.model_selection import train_test_split\n",
+        "from sklearn.compose import ColumnTransformer\n",
+        "from sklearn.pipeline import Pipeline\n",
+        "from sklearn.preprocessing import StandardScaler, OneHotEncoder\n",
+        "from sklearn.linear_model import LinearRegression, Ridge, Lasso\n",
+        "from sklearn.ensemble import RandomForestRegressor\n",
+        "from sklearn.model_selection import GridSearchCV\n",
+        "from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score\n",
+        "from sklearn.linear_model import LinearRegression, Ridge, Lasso\n",
+        "from sklearn.linear_model import Lasso\n",
+        "from sklearn.ensemble import RandomForestRegressor\n",
+        "from sklearn.model_selection import GridSearchCV\n",
+        "from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score\n",
+        "import warnings\n",
+        "warnings.filterwarnings('ignore')\n"
+      ],
+      "metadata": {
+        "id": "lJjetZJoROdv"
+      },
+      "execution_count": 1,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "## Data cleaning and Integrity Handling\n",
+        "\n",
+        "\n",
+        "# Load dataset\n",
+        "df = pd.read_csv(\"vehicles.csv\")\n",
+        "\n",
+        "#\n",
+        "# Basic integrity checks\n",
+        "#\n",
+        "\n",
+        "# Inspect dataset structure\n",
+        "print(df.shape)\n",
+        "print(df.info())\n",
+        "\n",
+        "# Remove duplicate records\n",
+        "df = df.drop_duplicates()\n",
+        "\n",
+        "#\n",
+        "# Target variable validation\n",
+        "#\n",
+        "\n",
+        "# Remove records with missing or invalid prices\n",
+        "df = df[df['price'].notna()]\n",
+        "df = df[df['price'] > 0]\n",
+        "\n",
+        "#\n",
+        "# Data type consistency\n",
+        "#\n",
+        "\n",
+        "# Ensure numeric fields are correctly typed\n",
+        "numeric_cols = ['year', 'odometer']\n",
+        "for col in numeric_cols:\n",
+        "    df[col] = pd.to_numeric(df[col], errors='coerce')\n",
+        "\n",
+        "#\n",
+        "# Logical validity checks\n",
+        "# -----------------------------\n",
+        "\n",
+        "# Remove rows with invalid year or mileage\n",
+        "df = df[(df['year'] >= 1970) & (df['year'] <= 2025)]\n",
+        "df = df[df['odometer'] >= 0]\n",
+        "\n",
+        "# -----------------------------\n",
+        "# Final integrity summary\n",
+        "# -----------------------------\n",
+        "\n",
+        "print(\"Cleaned dataset shape:\", df.shape)\n",
+        "print(\"Remaining missing values:\")\n",
+        "print(df.isna().sum())\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "6AVfdlnqPVew",
+        "outputId": "1f5dda54-e08d-429b-e09c-6ab1a0aa1d8c"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "(426880, 18)\n",
+            "<class 'pandas.core.frame.DataFrame'>\n",
+            "RangeIndex: 426880 entries, 0 to 426879\n",
+            "Data columns (total 18 columns):\n",
+            " #   Column        Non-Null Count   Dtype  \n",
+            "---  ------        --------------   -----  \n",
+            " 0   id            426880 non-null  int64  \n",
+            " 1   region        426880 non-null  object \n",
+            " 2   price         426880 non-null  int64  \n",
+            " 3   year          425675 non-null  float64\n",
+            " 4   manufacturer  409234 non-null  object \n",
+            " 5   model         421603 non-null  object \n",
+            " 6   condition     252776 non-null  object \n",
+            " 7   cylinders     249202 non-null  object \n",
+            " 8   fuel          423867 non-null  object \n",
+            " 9   odometer      422480 non-null  float64\n",
+            " 10  title_status  418638 non-null  object \n",
+            " 11  transmission  424324 non-null  object \n",
+            " 12  VIN           265838 non-null  object \n",
+            " 13  drive         296313 non-null  object \n",
+            " 14  size          120519 non-null  object \n",
+            " 15  type          334022 non-null  object \n",
+            " 16  paint_color   296677 non-null  object \n",
+            " 17  state         426880 non-null  object \n",
+            "dtypes: float64(2), int64(2), object(14)\n",
+            "memory usage: 58.6+ MB\n",
+            "None\n",
+            "Cleaned dataset shape: (385436, 18)\n",
+            "Remaining missing values:\n",
+            "id                   0\n",
+            "region               0\n",
+            "price                0\n",
+            "year                 0\n",
+            "manufacturer     13894\n",
+            "model             4042\n",
+            "condition       147762\n",
+            "cylinders       157367\n",
+            "fuel              2120\n",
+            "odometer             0\n",
+            "title_status      7222\n",
+            "transmission      1517\n",
+            "VIN             146494\n",
+            "drive           117364\n",
+            "size            276999\n",
+            "type             83043\n",
+            "paint_color     113907\n",
+            "state                0\n",
+            "dtype: int64\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "\n",
+        "# Assume df is already cleaned from previous step\n",
+        "\n",
+        "CURRENT_YEAR = 2025\n",
+        "\n",
+        "# -----------------------------\n",
+        "# Feature Engineering\n",
+        "# -----------------------------\n",
+        "\n",
+        "# Vehicle age\n",
+        "df['vehicle_age'] = CURRENT_YEAR - df['year']\n",
+        "\n",
+        "# Mileage per year (usage intensity)\n",
+        "df['mileage_per_year'] = df['odometer'] / df['vehicle_age']\n",
+        "df['mileage_per_year'] = df['mileage_per_year'].replace([np.inf, -np.inf], np.nan)\n",
+        "\n",
+        "# Log-transform skewed numerical features\n",
+        "df['log_price'] = np.log(df['price'])\n",
+        "df['log_odometer'] = np.log1p(df['odometer'])\n",
+        "\n",
+        "# -----------------------------\n",
+        "# Handle remaining missing values\n",
+        "# -----------------------------\n",
+        "\n",
+        "# Numerical imputation\n",
+        "num_cols = ['vehicle_age', 'mileage_per_year', 'log_odometer']\n",
+        "df[num_cols] = df[num_cols].fillna(df[num_cols].median())\n",
+        "\n",
+        "# Categorical imputation\n",
+        "cat_cols = ['manufacturer', 'condition', 'fuel', 'transmission']\n",
+        "for col in cat_cols:\n",
+        "    if col in df.columns:\n",
+        "        df[col] = df[col].fillna('Unknown')\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "yKQ-CRVaQS1z"
+      },
+      "execution_count": 3,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# -----------------------------\n",
+        "# Feature Selection\n",
+        "# -----------------------------\n",
+        "\n",
+        "# Target variable\n",
+        "y = df['log_price']\n",
+        "\n",
+        "# Drop raw or leakage columns\n",
+        "drop_cols = [\n",
+        "    'price',          # raw target\n",
+        "    'log_price',      # target already assigned\n",
+        "    'year',           # replaced by vehicle_age\n",
+        "    'odometer'        # replaced by log_odometer\n",
+        "]\n",
+        "\n",
+        "X = df.drop(columns=[col for col in drop_cols if col in df.columns])\n",
+        "\n",
+        "# Separate feature types\n",
+        "numerical_features = X.select_dtypes(include=['int64', 'float64']).columns.tolist()\n",
+        "categorical_features = X.select_dtypes(include=['object']).columns.tolist()\n",
+        "\n",
+        "print(\"Numerical features:\", numerical_features)\n",
+        "print(\"Categorical features:\", categorical_features)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "dRUoCdoS9mrd",
+        "outputId": "08b1541a-55ce-483b-803b-6aec71d738e8"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Numerical features: ['id', 'vehicle_age', 'mileage_per_year', 'log_odometer']\n",
+            "Categorical features: ['region', 'manufacturer', 'model', 'condition', 'cylinders', 'fuel', 'title_status', 'transmission', 'VIN', 'drive', 'size', 'type', 'paint_color', 'state']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 5,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "q520fJCnHYTt",
+        "outputId": "ee378637-f31c-4e1a-fd09-3e2f5a19b4d1"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Transformed training shape: (308348, 114066)\n",
+            "Transformed test shape: (77088, 114066)\n"
+          ]
+        }
+      ],
+      "source": [
+        "\n",
+        "\n",
+        "# -----------------------------\n",
+        "# Train–test split\n",
+        "# -----------------------------\n",
+        "\n",
+        "X_train, X_test, y_train, y_test = train_test_split(\n",
+        "    X, y, test_size=0.2, random_state=42\n",
+        ")\n",
+        "\n",
+        "# -----------------------------\n",
+        "# Preprocessing pipelines\n",
+        "# -----------------------------\n",
+        "\n",
+        "# Numerical pipeline: scaling\n",
+        "numeric_transformer = Pipeline(steps=[\n",
+        "    ('scaler', StandardScaler())\n",
+        "])\n",
+        "\n",
+        "# Categorical pipeline: one-hot encoding\n",
+        "categorical_transformer = Pipeline(steps=[\n",
+        "    ('encoder', OneHotEncoder(handle_unknown='ignore', drop='first'))\n",
+        "])\n",
+        "\n",
+        "# -----------------------------\n",
+        "# ColumnTransformer\n",
+        "# -----------------------------\n",
+        "\n",
+        "preprocessor = ColumnTransformer(\n",
+        "    transformers=[\n",
+        "        ('num', numeric_transformer, numerical_features),\n",
+        "        ('cat', categorical_transformer, categorical_features)\n",
+        "    ]\n",
+        ")\n",
+        "\n",
+        "# -----------------------------\n",
+        "# Fit and transform\n",
+        "# -----------------------------\n",
+        "\n",
+        "X_train_processed = preprocessor.fit_transform(X_train)\n",
+        "X_test_processed = preprocessor.transform(X_test)\n",
+        "\n",
+        "print(\"Transformed training shape:\", X_train_processed.shape)\n",
+        "print(\"Transformed test shape:\", X_test_processed.shape)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 6,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "-J7kACEdHYTu",
+        "outputId": "6eba39f7-0b0d-4de8-cfbb-c05eab9df5ae"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Encoded categorical shape: (385436, 131367)\n"
+          ]
+        }
+      ],
+      "source": [
+        "##Encoding categorical variables (One-Hot Encoding)\n",
+        "\n",
+        "from sklearn.preprocessing import OneHotEncoder\n",
+        "from sklearn.compose import ColumnTransformer\n",
+        "\n",
+        "# -----------------------------\n",
+        "# Identify categorical columns\n",
+        "# -----------------------------\n",
+        "\n",
+        "categorical_features = X.select_dtypes(include=['object']).columns.tolist()\n",
+        "\n",
+        "# -----------------------------\n",
+        "# One-Hot Encoder\n",
+        "# -----------------------------\n",
+        "\n",
+        "categorical_encoder = OneHotEncoder(\n",
+        "    handle_unknown='ignore',  # prevents errors on unseen categories\n",
+        "    drop='first'              # avoids multicollinearity\n",
+        ")\n",
+        "\n",
+        "# -----------------------------\n",
+        "# Apply encoding\n",
+        "# -----------------------------\n",
+        "\n",
+        "categorical_encoded = categorical_encoder.fit_transform(X[categorical_features])\n",
+        "\n",
+        "print(\"Encoded categorical shape:\", categorical_encoded.shape)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 7,
+      "metadata": {
+        "id": "d6afeWjIHYTu"
+      },
+      "outputs": [],
+      "source": [
+        "##Preferred Production Approach\n",
+        "\n",
+        "\n",
+        "from sklearn.pipeline import Pipeline\n",
+        "\n",
+        "categorical_pipeline = Pipeline(steps=[\n",
+        "    ('encoder', OneHotEncoder(handle_unknown='ignore', drop='first'))\n",
+        "])\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 8,
+      "metadata": {
+        "id": "0h4XhySJHYTu"
+      },
+      "outputs": [],
+      "source": [
+        "##Used inside a ColumnTransformer\n",
+        "\n",
+        "preprocessor = ColumnTransformer(\n",
+        "    transformers=[\n",
+        "        ('cat', categorical_pipeline, categorical_features)\n",
+        "    ],\n",
+        "    remainder='passthrough'\n",
+        ")\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "t3y8oVNKHYTu"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "rOTUQUvKHYTv"
+      },
+      "source": [
+        "### Modeling\n",
+        "\n",
+        "With your (almost?) final dataset in hand, it is now time to build some models.  Here, you should build a number of different regression models with the price as the target.  In building your models, you should explore different parameters and be sure to cross-validate your findings."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "In the Modeling phase of CRISP-DM, the prepared dataset is used to train and evaluate multiple regression models with used car price as the target variable. The goal is to identify models that both accurately predict price and provide insight into the key drivers of pricing.\n",
+        "\n",
+        "First, establish a baseline model, such as a simple linear regression, to provide a reference point for performance. This helps assess whether more complex models offer meaningful improvements. Next, train several alternative regression models, including regularized approaches (Ridge and Lasso regression) to address multicollinearity and perform implicit feature selection, as well as non-linear models such as decision trees, random forests, or gradient boosting regressors to capture complex relationships between vehicle attributes and price.\n",
+        "\n",
+        "Train–Test Split and Pipeline Preparation\n",
+        "\n",
+        "Split the dataset into training and testing subsets to enable unbiased model evaluation. Where possible, construct preprocessing pipelines in scikit-learn to encapsulate transformations, encoding, and scaling steps, ensuring reproducibility and preventing data leakage during model training.\n",
+        "\n",
+        "For each model, hyperparameters should be systematically explored using techniques such as grid search or randomized search. Cross-validation (e.g., k-fold cross-validation) should be applied during this process to ensure that performance estimates are robust and not dependent on a single train-test split. Evaluation metrics such as RMSE, MAE, and R² should be used to compare models consistently.\n",
+        "\n",
+        "Finally, the best-performing models should be selected based on cross-validated results, balancing predictive accuracy with interpretability. Feature coefficients or importance scores can then be examined to understand which variables most strongly influence used car prices, directly supporting the original business objective."
+      ],
+      "metadata": {
+        "id": "LZF-UzLa1VTr"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 9,
+      "metadata": {
+        "id": "E-fpBog0HYTv"
+      },
+      "outputs": [],
+      "source": [
+        "##Baseline Model: Linear Regression\n",
+        "\n",
+        "lin_reg = Pipeline(steps=[\n",
+        "    ('preprocessor', preprocessor),\n",
+        "    ('model', LinearRegression())\n",
+        "])\n",
+        "\n",
+        "lin_reg.fit(X_train, y_train)\n",
+        "y_pred = lin_reg.predict(X_test)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 10,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "bnBWxazgHYTv",
+        "outputId": "5fab4df9-bdb0-4f8e-8a5e-f9d9522e4bda"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Linear Regression Performance\n",
+            "MAE: 0.8430928421045597\n",
+            "RMSE: 1.2488444519881872\n",
+            "R²: 0.007151482843126611\n"
+          ]
+        }
+      ],
+      "source": [
+        "##Evaluating\n",
+        "\n",
+        "y_pred_lr = lin_reg.predict(X_test)\n",
+        "\n",
+        "print(\"Linear Regression Performance\")\n",
+        "print(\"MAE:\", mean_absolute_error(y_test, y_pred_lr))\n",
+        "rmse = np.sqrt(mean_squared_error(y_test, y_pred_lr))\n",
+        "print(\"RMSE:\", rmse)\n",
+        "print(\"R²:\", r2_score(y_test, y_pred_lr))\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 11,
+      "metadata": {
+        "id": "CpvrPSq_HYTw",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 278
+        },
+        "outputId": "1392ff74-aa29-4616-87da-140dd4593589"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "GridSearchCV(cv=5,\n",
+              "             estimator=Pipeline(steps=[('preprocessor',\n",
+              "                                        ColumnTransformer(remainder='passthrough',\n",
+              "                                                          transformers=[('cat',\n",
+              "                                                                         Pipeline(steps=[('encoder',\n",
+              "                                                                                          OneHotEncoder(drop='first',\n",
+              "                                                                                                        handle_unknown='ignore'))]),\n",
+              "                                                                         ['region',\n",
+              "                                                                          'manufacturer',\n",
+              "                                                                          'model',\n",
+              "                                                                          'condition',\n",
+              "                                                                          'cylinders',\n",
+              "                                                                          'fuel',\n",
+              "                                                                          'title_status',\n",
+              "                                                                          'transmission',\n",
+              "                                                                          'VIN',\n",
+              "                                                                          'drive',\n",
+              "                                                                          'size',\n",
+              "                                                                          'type',\n",
+              "                                                                          'paint_color',\n",
+              "                                                                          'state'])])),\n",
+              "                                       ('model', Ridge())]),\n",
+              "             param_grid={'model__alpha': [0.1, 1.0, 10.0]},\n",
+              "             scoring='neg_root_mean_squared_error')"
+            ],
+            "text/html": [
+              "<style>#sk-container-id-1 {\n",
+              "  /* Definition of color scheme common for light and dark mode */\n",
+              "  --sklearn-color-text: #000;\n",
+              "  --sklearn-color-text-muted: #666;\n",
+              "  --sklearn-color-line: gray;\n",
+              "  /* Definition of color scheme for unfitted estimators */\n",
+              "  --sklearn-color-unfitted-level-0: #fff5e6;\n",
+              "  --sklearn-color-unfitted-level-1: #f6e4d2;\n",
+              "  --sklearn-color-unfitted-level-2: #ffe0b3;\n",
+              "  --sklearn-color-unfitted-level-3: chocolate;\n",
+              "  /* Definition of color scheme for fitted estimators */\n",
+              "  --sklearn-color-fitted-level-0: #f0f8ff;\n",
+              "  --sklearn-color-fitted-level-1: #d4ebff;\n",
+              "  --sklearn-color-fitted-level-2: #b3dbfd;\n",
+              "  --sklearn-color-fitted-level-3: cornflowerblue;\n",
+              "\n",
+              "  /* Specific color for light theme */\n",
+              "  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));\n",
+              "  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));\n",
+              "  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));\n",
+              "  --sklearn-color-icon: #696969;\n",
+              "\n",
+              "  @media (prefers-color-scheme: dark) {\n",
+              "    /* Redefinition of color scheme for dark theme */\n",
+              "    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));\n",
+              "    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));\n",
+              "    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));\n",
+              "    --sklearn-color-icon: #878787;\n",
+              "  }\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 {\n",
+              "  color: var(--sklearn-color-text);\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 pre {\n",
+              "  padding: 0;\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 input.sk-hidden--visually {\n",
+              "  border: 0;\n",
+              "  clip: rect(1px 1px 1px 1px);\n",
+              "  clip: rect(1px, 1px, 1px, 1px);\n",
+              "  height: 1px;\n",
+              "  margin: -1px;\n",
+              "  overflow: hidden;\n",
+              "  padding: 0;\n",
+              "  position: absolute;\n",
+              "  width: 1px;\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 div.sk-dashed-wrapped {\n",
+              "  border: 1px dashed var(--sklearn-color-line);\n",
+              "  margin: 0 0.4em 0.5em 0.4em;\n",
+              "  box-sizing: border-box;\n",
+              "  padding-bottom: 0.4em;\n",
+              "  background-color: var(--sklearn-color-background);\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 div.sk-container {\n",
+              "  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`\n",
+              "     but bootstrap.min.css set `[hidden] { display: none !important; }`\n",
+              "     so we also need the `!important` here to be able to override the\n",
+              "     default hidden behavior on the sphinx rendered scikit-learn.org.\n",
+              "     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */\n",
+              "  display: inline-block !important;\n",
+              "  position: relative;\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 div.sk-text-repr-fallback {\n",
+              "  display: none;\n",
+              "}\n",
+              "\n",
+              "div.sk-parallel-item,\n",
+              "div.sk-serial,\n",
+              "div.sk-item {\n",
+              "  /* draw centered vertical line to link estimators */\n",
+              "  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));\n",
+              "  background-size: 2px 100%;\n",
+              "  background-repeat: no-repeat;\n",
+              "  background-position: center center;\n",
+              "}\n",
+              "\n",
+              "/* Parallel-specific style estimator block */\n",
+              "\n",
+              "#sk-container-id-1 div.sk-parallel-item::after {\n",
+              "  content: \"\";\n",
+              "  width: 100%;\n",
+              "  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);\n",
+              "  flex-grow: 1;\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 div.sk-parallel {\n",
+              "  display: flex;\n",
+              "  align-items: stretch;\n",
+              "  justify-content: center;\n",
+              "  background-color: var(--sklearn-color-background);\n",
+              "  position: relative;\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 div.sk-parallel-item {\n",
+              "  display: flex;\n",
+              "  flex-direction: column;\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 div.sk-parallel-item:first-child::after {\n",
+              "  align-self: flex-end;\n",
+              "  width: 50%;\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 div.sk-parallel-item:last-child::after {\n",
+              "  align-self: flex-start;\n",
+              "  width: 50%;\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 div.sk-parallel-item:only-child::after {\n",
+              "  width: 0;\n",
+              "}\n",
+              "\n",
+              "/* Serial-specific style estimator block */\n",
+              "\n",
+              "#sk-container-id-1 div.sk-serial {\n",
+              "  display: flex;\n",
+              "  flex-direction: column;\n",
+              "  align-items: center;\n",
+              "  background-color: var(--sklearn-color-background);\n",
+              "  padding-right: 1em;\n",
+              "  padding-left: 1em;\n",
+              "}\n",
+              "\n",
+              "\n",
+              "/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is\n",
+              "clickable and can be expanded/collapsed.\n",
+              "- Pipeline and ColumnTransformer use this feature and define the default style\n",
+              "- Estimators will overwrite some part of the style using the `sk-estimator` class\n",
+              "*/\n",
+              "\n",
+              "/* Pipeline and ColumnTransformer style (default) */\n",
+              "\n",
+              "#sk-container-id-1 div.sk-toggleable {\n",
+              "  /* Default theme specific background. It is overwritten whether we have a\n",
+              "  specific estimator or a Pipeline/ColumnTransformer */\n",
+              "  background-color: var(--sklearn-color-background);\n",
+              "}\n",
+              "\n",
+              "/* Toggleable label */\n",
+              "#sk-container-id-1 label.sk-toggleable__label {\n",
+              "  cursor: pointer;\n",
+              "  display: flex;\n",
+              "  width: 100%;\n",
+              "  margin-bottom: 0;\n",
+              "  padding: 0.5em;\n",
+              "  box-sizing: border-box;\n",
+              "  text-align: center;\n",
+              "  align-items: start;\n",
+              "  justify-content: space-between;\n",
+              "  gap: 0.5em;\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 label.sk-toggleable__label .caption {\n",
+              "  font-size: 0.6rem;\n",
+              "  font-weight: lighter;\n",
+              "  color: var(--sklearn-color-text-muted);\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 label.sk-toggleable__label-arrow:before {\n",
+              "  /* Arrow on the left of the label */\n",
+              "  content: \"▸\";\n",
+              "  float: left;\n",
+              "  margin-right: 0.25em;\n",
+              "  color: var(--sklearn-color-icon);\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {\n",
+              "  color: var(--sklearn-color-text);\n",
+              "}\n",
+              "\n",
+              "/* Toggleable content - dropdown */\n",
+              "\n",
+              "#sk-container-id-1 div.sk-toggleable__content {\n",
+              "  max-height: 0;\n",
+              "  max-width: 0;\n",
+              "  overflow: hidden;\n",
+              "  text-align: left;\n",
+              "  /* unfitted */\n",
+              "  background-color: var(--sklearn-color-unfitted-level-0);\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 div.sk-toggleable__content.fitted {\n",
+              "  /* fitted */\n",
+              "  background-color: var(--sklearn-color-fitted-level-0);\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 div.sk-toggleable__content pre {\n",
+              "  margin: 0.2em;\n",
+              "  border-radius: 0.25em;\n",
+              "  color: var(--sklearn-color-text);\n",
+              "  /* unfitted */\n",
+              "  background-color: var(--sklearn-color-unfitted-level-0);\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 div.sk-toggleable__content.fitted pre {\n",
+              "  /* unfitted */\n",
+              "  background-color: var(--sklearn-color-fitted-level-0);\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {\n",
+              "  /* Expand drop-down */\n",
+              "  max-height: 200px;\n",
+              "  max-width: 100%;\n",
+              "  overflow: auto;\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {\n",
+              "  content: \"▾\";\n",
+              "}\n",
+              "\n",
+              "/* Pipeline/ColumnTransformer-specific style */\n",
+              "\n",
+              "#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {\n",
+              "  color: var(--sklearn-color-text);\n",
+              "  background-color: var(--sklearn-color-unfitted-level-2);\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {\n",
+              "  background-color: var(--sklearn-color-fitted-level-2);\n",
+              "}\n",
+              "\n",
+              "/* Estimator-specific style */\n",
+              "\n",
+              "/* Colorize estimator box */\n",
+              "#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {\n",
+              "  /* unfitted */\n",
+              "  background-color: var(--sklearn-color-unfitted-level-2);\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {\n",
+              "  /* fitted */\n",
+              "  background-color: var(--sklearn-color-fitted-level-2);\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 div.sk-label label.sk-toggleable__label,\n",
+              "#sk-container-id-1 div.sk-label label {\n",
+              "  /* The background is the default theme color */\n",
+              "  color: var(--sklearn-color-text-on-default-background);\n",
+              "}\n",
+              "\n",
+              "/* On hover, darken the color of the background */\n",
+              "#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {\n",
+              "  color: var(--sklearn-color-text);\n",
+              "  background-color: var(--sklearn-color-unfitted-level-2);\n",
+              "}\n",
+              "\n",
+              "/* Label box, darken color on hover, fitted */\n",
+              "#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {\n",
+              "  color: var(--sklearn-color-text);\n",
+              "  background-color: var(--sklearn-color-fitted-level-2);\n",
+              "}\n",
+              "\n",
+              "/* Estimator label */\n",
+              "\n",
+              "#sk-container-id-1 div.sk-label label {\n",
+              "  font-family: monospace;\n",
+              "  font-weight: bold;\n",
+              "  display: inline-block;\n",
+              "  line-height: 1.2em;\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 div.sk-label-container {\n",
+              "  text-align: center;\n",
+              "}\n",
+              "\n",
+              "/* Estimator-specific */\n",
+              "#sk-container-id-1 div.sk-estimator {\n",
+              "  font-family: monospace;\n",
+              "  border: 1px dotted var(--sklearn-color-border-box);\n",
+              "  border-radius: 0.25em;\n",
+              "  box-sizing: border-box;\n",
+              "  margin-bottom: 0.5em;\n",
+              "  /* unfitted */\n",
+              "  background-color: var(--sklearn-color-unfitted-level-0);\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 div.sk-estimator.fitted {\n",
+              "  /* fitted */\n",
+              "  background-color: var(--sklearn-color-fitted-level-0);\n",
+              "}\n",
+              "\n",
+              "/* on hover */\n",
+              "#sk-container-id-1 div.sk-estimator:hover {\n",
+              "  /* unfitted */\n",
+              "  background-color: var(--sklearn-color-unfitted-level-2);\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 div.sk-estimator.fitted:hover {\n",
+              "  /* fitted */\n",
+              "  background-color: var(--sklearn-color-fitted-level-2);\n",
+              "}\n",
+              "\n",
+              "/* Specification for estimator info (e.g. \"i\" and \"?\") */\n",
+              "\n",
+              "/* Common style for \"i\" and \"?\" */\n",
+              "\n",
+              ".sk-estimator-doc-link,\n",
+              "a:link.sk-estimator-doc-link,\n",
+              "a:visited.sk-estimator-doc-link {\n",
+              "  float: right;\n",
+              "  font-size: smaller;\n",
+              "  line-height: 1em;\n",
+              "  font-family: monospace;\n",
+              "  background-color: var(--sklearn-color-background);\n",
+              "  border-radius: 1em;\n",
+              "  height: 1em;\n",
+              "  width: 1em;\n",
+              "  text-decoration: none !important;\n",
+              "  margin-left: 0.5em;\n",
+              "  text-align: center;\n",
+              "  /* unfitted */\n",
+              "  border: var(--sklearn-color-unfitted-level-1) 1pt solid;\n",
+              "  color: var(--sklearn-color-unfitted-level-1);\n",
+              "}\n",
+              "\n",
+              ".sk-estimator-doc-link.fitted,\n",
+              "a:link.sk-estimator-doc-link.fitted,\n",
+              "a:visited.sk-estimator-doc-link.fitted {\n",
+              "  /* fitted */\n",
+              "  border: var(--sklearn-color-fitted-level-1) 1pt solid;\n",
+              "  color: var(--sklearn-color-fitted-level-1);\n",
+              "}\n",
+              "\n",
+              "/* On hover */\n",
+              "div.sk-estimator:hover .sk-estimator-doc-link:hover,\n",
+              ".sk-estimator-doc-link:hover,\n",
+              "div.sk-label-container:hover .sk-estimator-doc-link:hover,\n",
+              ".sk-estimator-doc-link:hover {\n",
+              "  /* unfitted */\n",
+              "  background-color: var(--sklearn-color-unfitted-level-3);\n",
+              "  color: var(--sklearn-color-background);\n",
+              "  text-decoration: none;\n",
+              "}\n",
+              "\n",
+              "div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,\n",
+              ".sk-estimator-doc-link.fitted:hover,\n",
+              "div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,\n",
+              ".sk-estimator-doc-link.fitted:hover {\n",
+              "  /* fitted */\n",
+              "  background-color: var(--sklearn-color-fitted-level-3);\n",
+              "  color: var(--sklearn-color-background);\n",
+              "  text-decoration: none;\n",
+              "}\n",
+              "\n",
+              "/* Span, style for the box shown on hovering the info icon */\n",
+              ".sk-estimator-doc-link span {\n",
+              "  display: none;\n",
+              "  z-index: 9999;\n",
+              "  position: relative;\n",
+              "  font-weight: normal;\n",
+              "  right: .2ex;\n",
+              "  padding: .5ex;\n",
+              "  margin: .5ex;\n",
+              "  width: min-content;\n",
+              "  min-width: 20ex;\n",
+              "  max-width: 50ex;\n",
+              "  color: var(--sklearn-color-text);\n",
+              "  box-shadow: 2pt 2pt 4pt #999;\n",
+              "  /* unfitted */\n",
+              "  background: var(--sklearn-color-unfitted-level-0);\n",
+              "  border: .5pt solid var(--sklearn-color-unfitted-level-3);\n",
+              "}\n",
+              "\n",
+              ".sk-estimator-doc-link.fitted span {\n",
+              "  /* fitted */\n",
+              "  background: var(--sklearn-color-fitted-level-0);\n",
+              "  border: var(--sklearn-color-fitted-level-3);\n",
+              "}\n",
+              "\n",
+              ".sk-estimator-doc-link:hover span {\n",
+              "  display: block;\n",
+              "}\n",
+              "\n",
+              "/* \"?\"-specific style due to the `<a>` HTML tag */\n",
+              "\n",
+              "#sk-container-id-1 a.estimator_doc_link {\n",
+              "  float: right;\n",
+              "  font-size: 1rem;\n",
+              "  line-height: 1em;\n",
+              "  font-family: monospace;\n",
+              "  background-color: var(--sklearn-color-background);\n",
+              "  border-radius: 1rem;\n",
+              "  height: 1rem;\n",
+              "  width: 1rem;\n",
+              "  text-decoration: none;\n",
+              "  /* unfitted */\n",
+              "  color: var(--sklearn-color-unfitted-level-1);\n",
+              "  border: var(--sklearn-color-unfitted-level-1) 1pt solid;\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 a.estimator_doc_link.fitted {\n",
+              "  /* fitted */\n",
+              "  border: var(--sklearn-color-fitted-level-1) 1pt solid;\n",
+              "  color: var(--sklearn-color-fitted-level-1);\n",
+              "}\n",
+              "\n",
+              "/* On hover */\n",
+              "#sk-container-id-1 a.estimator_doc_link:hover {\n",
+              "  /* unfitted */\n",
+              "  background-color: var(--sklearn-color-unfitted-level-3);\n",
+              "  color: var(--sklearn-color-background);\n",
+              "  text-decoration: none;\n",
+              "}\n",
+              "\n",
+              "#sk-container-id-1 a.estimator_doc_link.fitted:hover {\n",
+              "  /* fitted */\n",
+              "  background-color: var(--sklearn-color-fitted-level-3);\n",
+              "}\n",
+              "</style><div id=\"sk-container-id-1\" class=\"sk-top-container\"><div class=\"sk-text-repr-fallback\"><pre>GridSearchCV(cv=5,\n",
+              "             estimator=Pipeline(steps=[(&#x27;preprocessor&#x27;,\n",
+              "                                        ColumnTransformer(remainder=&#x27;passthrough&#x27;,\n",
+              "                                                          transformers=[(&#x27;cat&#x27;,\n",
+              "                                                                         Pipeline(steps=[(&#x27;encoder&#x27;,\n",
+              "                                                                                          OneHotEncoder(drop=&#x27;first&#x27;,\n",
+              "                                                                                                        handle_unknown=&#x27;ignore&#x27;))]),\n",
+              "                                                                         [&#x27;region&#x27;,\n",
+              "                                                                          &#x27;manufacturer&#x27;,\n",
+              "                                                                          &#x27;model&#x27;,\n",
+              "                                                                          &#x27;condition&#x27;,\n",
+              "                                                                          &#x27;cylinders&#x27;,\n",
+              "                                                                          &#x27;fuel&#x27;,\n",
+              "                                                                          &#x27;title_status&#x27;,\n",
+              "                                                                          &#x27;transmission&#x27;,\n",
+              "                                                                          &#x27;VIN&#x27;,\n",
+              "                                                                          &#x27;drive&#x27;,\n",
+              "                                                                          &#x27;size&#x27;,\n",
+              "                                                                          &#x27;type&#x27;,\n",
+              "                                                                          &#x27;paint_color&#x27;,\n",
+              "                                                                          &#x27;state&#x27;])])),\n",
+              "                                       (&#x27;model&#x27;, Ridge())]),\n",
+              "             param_grid={&#x27;model__alpha&#x27;: [0.1, 1.0, 10.0]},\n",
+              "             scoring=&#x27;neg_root_mean_squared_error&#x27;)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class=\"sk-container\" hidden><div class=\"sk-item sk-dashed-wrapped\"><div class=\"sk-label-container\"><div class=\"sk-label fitted sk-toggleable\"><input class=\"sk-toggleable__control sk-hidden--visually\" id=\"sk-estimator-id-1\" type=\"checkbox\" ><label for=\"sk-estimator-id-1\" class=\"sk-toggleable__label fitted sk-toggleable__label-arrow\"><div><div>GridSearchCV</div></div><div><a class=\"sk-estimator-doc-link fitted\" rel=\"noreferrer\" target=\"_blank\" href=\"https://scikit-learn.org/1.6/modules/generated/sklearn.model_selection.GridSearchCV.html\">?<span>Documentation for GridSearchCV</span></a><span class=\"sk-estimator-doc-link fitted\">i<span>Fitted</span></span></div></label><div class=\"sk-toggleable__content fitted\"><pre>GridSearchCV(cv=5,\n",
+              "             estimator=Pipeline(steps=[(&#x27;preprocessor&#x27;,\n",
+              "                                        ColumnTransformer(remainder=&#x27;passthrough&#x27;,\n",
+              "                                                          transformers=[(&#x27;cat&#x27;,\n",
+              "                                                                         Pipeline(steps=[(&#x27;encoder&#x27;,\n",
+              "                                                                                          OneHotEncoder(drop=&#x27;first&#x27;,\n",
+              "                                                                                                        handle_unknown=&#x27;ignore&#x27;))]),\n",
+              "                                                                         [&#x27;region&#x27;,\n",
+              "                                                                          &#x27;manufacturer&#x27;,\n",
+              "                                                                          &#x27;model&#x27;,\n",
+              "                                                                          &#x27;condition&#x27;,\n",
+              "                                                                          &#x27;cylinders&#x27;,\n",
+              "                                                                          &#x27;fuel&#x27;,\n",
+              "                                                                          &#x27;title_status&#x27;,\n",
+              "                                                                          &#x27;transmission&#x27;,\n",
+              "                                                                          &#x27;VIN&#x27;,\n",
+              "                                                                          &#x27;drive&#x27;,\n",
+              "                                                                          &#x27;size&#x27;,\n",
+              "                                                                          &#x27;type&#x27;,\n",
+              "                                                                          &#x27;paint_color&#x27;,\n",
+              "                                                                          &#x27;state&#x27;])])),\n",
+              "                                       (&#x27;model&#x27;, Ridge())]),\n",
+              "             param_grid={&#x27;model__alpha&#x27;: [0.1, 1.0, 10.0]},\n",
+              "             scoring=&#x27;neg_root_mean_squared_error&#x27;)</pre></div> </div></div><div class=\"sk-parallel\"><div class=\"sk-parallel-item\"><div class=\"sk-item\"><div class=\"sk-label-container\"><div class=\"sk-label fitted sk-toggleable\"><input class=\"sk-toggleable__control sk-hidden--visually\" id=\"sk-estimator-id-2\" type=\"checkbox\" ><label for=\"sk-estimator-id-2\" class=\"sk-toggleable__label fitted sk-toggleable__label-arrow\"><div><div>best_estimator_: Pipeline</div></div></label><div class=\"sk-toggleable__content fitted\"><pre>Pipeline(steps=[(&#x27;preprocessor&#x27;,\n",
+              "                 ColumnTransformer(remainder=&#x27;passthrough&#x27;,\n",
+              "                                   transformers=[(&#x27;cat&#x27;,\n",
+              "                                                  Pipeline(steps=[(&#x27;encoder&#x27;,\n",
+              "                                                                   OneHotEncoder(drop=&#x27;first&#x27;,\n",
+              "                                                                                 handle_unknown=&#x27;ignore&#x27;))]),\n",
+              "                                                  [&#x27;region&#x27;, &#x27;manufacturer&#x27;,\n",
+              "                                                   &#x27;model&#x27;, &#x27;condition&#x27;,\n",
+              "                                                   &#x27;cylinders&#x27;, &#x27;fuel&#x27;,\n",
+              "                                                   &#x27;title_status&#x27;,\n",
+              "                                                   &#x27;transmission&#x27;, &#x27;VIN&#x27;,\n",
+              "                                                   &#x27;drive&#x27;, &#x27;size&#x27;, &#x27;type&#x27;,\n",
+              "                                                   &#x27;paint_color&#x27;, &#x27;state&#x27;])])),\n",
+              "                (&#x27;model&#x27;, Ridge(alpha=0.1))])</pre></div> </div></div><div class=\"sk-serial\"><div class=\"sk-item\"><div class=\"sk-serial\"><div class=\"sk-item sk-dashed-wrapped\"><div class=\"sk-label-container\"><div class=\"sk-label fitted sk-toggleable\"><input class=\"sk-toggleable__control sk-hidden--visually\" id=\"sk-estimator-id-3\" type=\"checkbox\" ><label for=\"sk-estimator-id-3\" class=\"sk-toggleable__label fitted sk-toggleable__label-arrow\"><div><div>preprocessor: ColumnTransformer</div></div><div><a class=\"sk-estimator-doc-link fitted\" rel=\"noreferrer\" target=\"_blank\" href=\"https://scikit-learn.org/1.6/modules/generated/sklearn.compose.ColumnTransformer.html\">?<span>Documentation for preprocessor: ColumnTransformer</span></a></div></label><div class=\"sk-toggleable__content fitted\"><pre>ColumnTransformer(remainder=&#x27;passthrough&#x27;,\n",
+              "                  transformers=[(&#x27;cat&#x27;,\n",
+              "                                 Pipeline(steps=[(&#x27;encoder&#x27;,\n",
+              "                                                  OneHotEncoder(drop=&#x27;first&#x27;,\n",
+              "                                                                handle_unknown=&#x27;ignore&#x27;))]),\n",
+              "                                 [&#x27;region&#x27;, &#x27;manufacturer&#x27;, &#x27;model&#x27;,\n",
+              "                                  &#x27;condition&#x27;, &#x27;cylinders&#x27;, &#x27;fuel&#x27;,\n",
+              "                                  &#x27;title_status&#x27;, &#x27;transmission&#x27;, &#x27;VIN&#x27;,\n",
+              "                                  &#x27;drive&#x27;, &#x27;size&#x27;, &#x27;type&#x27;, &#x27;paint_color&#x27;,\n",
+              "                                  &#x27;state&#x27;])])</pre></div> </div></div><div class=\"sk-parallel\"><div class=\"sk-parallel-item\"><div class=\"sk-item\"><div class=\"sk-label-container\"><div class=\"sk-label fitted sk-toggleable\"><input class=\"sk-toggleable__control sk-hidden--visually\" id=\"sk-estimator-id-4\" type=\"checkbox\" ><label for=\"sk-estimator-id-4\" class=\"sk-toggleable__label fitted sk-toggleable__label-arrow\"><div><div>cat</div></div></label><div class=\"sk-toggleable__content fitted\"><pre>[&#x27;region&#x27;, &#x27;manufacturer&#x27;, &#x27;model&#x27;, &#x27;condition&#x27;, &#x27;cylinders&#x27;, &#x27;fuel&#x27;, &#x27;title_status&#x27;, &#x27;transmission&#x27;, &#x27;VIN&#x27;, &#x27;drive&#x27;, &#x27;size&#x27;, &#x27;type&#x27;, &#x27;paint_color&#x27;, &#x27;state&#x27;]</pre></div> </div></div><div class=\"sk-serial\"><div class=\"sk-item\"><div class=\"sk-serial\"><div class=\"sk-item\"><div class=\"sk-estimator fitted sk-toggleable\"><input class=\"sk-toggleable__control sk-hidden--visually\" id=\"sk-estimator-id-5\" type=\"checkbox\" ><label for=\"sk-estimator-id-5\" class=\"sk-toggleable__label fitted sk-toggleable__label-arrow\"><div><div>OneHotEncoder</div></div><div><a class=\"sk-estimator-doc-link fitted\" rel=\"noreferrer\" target=\"_blank\" href=\"https://scikit-learn.org/1.6/modules/generated/sklearn.preprocessing.OneHotEncoder.html\">?<span>Documentation for OneHotEncoder</span></a></div></label><div class=\"sk-toggleable__content fitted\"><pre>OneHotEncoder(drop=&#x27;first&#x27;, handle_unknown=&#x27;ignore&#x27;)</pre></div> </div></div></div></div></div></div></div><div class=\"sk-parallel-item\"><div class=\"sk-item\"><div class=\"sk-label-container\"><div class=\"sk-label fitted sk-toggleable\"><input class=\"sk-toggleable__control sk-hidden--visually\" id=\"sk-estimator-id-6\" type=\"checkbox\" ><label for=\"sk-estimator-id-6\" class=\"sk-toggleable__label fitted sk-toggleable__label-arrow\"><div><div>remainder</div></div></label><div class=\"sk-toggleable__content fitted\"><pre>[&#x27;id&#x27;, &#x27;vehicle_age&#x27;, &#x27;mileage_per_year&#x27;, &#x27;log_odometer&#x27;]</pre></div> </div></div><div class=\"sk-serial\"><div class=\"sk-item\"><div class=\"sk-estimator fitted sk-toggleable\"><input class=\"sk-toggleable__control sk-hidden--visually\" id=\"sk-estimator-id-7\" type=\"checkbox\" ><label for=\"sk-estimator-id-7\" class=\"sk-toggleable__label fitted sk-toggleable__label-arrow\"><div><div>passthrough</div></div></label><div class=\"sk-toggleable__content fitted\"><pre>passthrough</pre></div> </div></div></div></div></div></div></div><div class=\"sk-item\"><div class=\"sk-estimator fitted sk-toggleable\"><input class=\"sk-toggleable__control sk-hidden--visually\" id=\"sk-estimator-id-8\" type=\"checkbox\" ><label for=\"sk-estimator-id-8\" class=\"sk-toggleable__label fitted sk-toggleable__label-arrow\"><div><div>Ridge</div></div><div><a class=\"sk-estimator-doc-link fitted\" rel=\"noreferrer\" target=\"_blank\" href=\"https://scikit-learn.org/1.6/modules/generated/sklearn.linear_model.Ridge.html\">?<span>Documentation for Ridge</span></a></div></label><div class=\"sk-toggleable__content fitted\"><pre>Ridge(alpha=0.1)</pre></div> </div></div></div></div></div></div></div></div></div></div></div>"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 11
+        }
+      ],
+      "source": [
+        "##Regularized Models: Ridge Regression and Lasso Regression\n",
+        "\n",
+        "\n",
+        "\n",
+        "##Ridge Regression (L2)\n",
+        "\n",
+        "ridge = Pipeline(steps=[\n",
+        "    ('preprocessor', preprocessor),\n",
+        "    ('model', Ridge())\n",
+        "])\n",
+        "\n",
+        "ridge_params = {\n",
+        "    'model__alpha': [0.1, 1.0, 10.0]\n",
+        "}\n",
+        "\n",
+        "ridge_cv = GridSearchCV(\n",
+        "    ridge,\n",
+        "    ridge_params,\n",
+        "    cv=5,\n",
+        "    scoring='neg_root_mean_squared_error'\n",
+        ")\n",
+        "\n",
+        "ridge_cv.fit(X_train, y_train)\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "##Lasso Regression (L1)\n",
+        "\n",
+        "lasso = Pipeline(steps=[\n",
+        "    ('preprocessor', preprocessor),\n",
+        "    ('model', Lasso(max_iter=5000))\n",
+        "])\n",
+        "\n",
+        "lasso_params = {\n",
+        "    'model__alpha': [0.001, 0.01, 0.1]\n",
+        "}\n",
+        "\n",
+        "lasso_cv = GridSearchCV(\n",
+        "    lasso,\n",
+        "    lasso_params,\n",
+        "    cv=5,\n",
+        "    scoring='neg_root_mean_squared_error'\n",
+        ")\n",
+        "\n",
+        "lasso_cv.fit(X_train, y_train)\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "6nSg9bdGLUB5"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(type(Pipeline))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 139
+        },
+        "id": "NhpiyIcW-zJI",
+        "outputId": "95924887-0620-4d34-cd4c-319765ac1e83"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "name 'Pipeline' is not defined",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m/tmp/ipython-input-2226286752.py\u001b[0m in \u001b[0;36m<cell line: 0>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mtype\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mPipeline\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m: name 'Pipeline' is not defined"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "##Non-Linear Model: Random Forest\n",
+        "\n",
+        "rf = Pipeline(steps=[\n",
+        "    ('preprocessor', preprocessor),\n",
+        "    ('model', RandomForestRegressor(random_state=42))\n",
+        "])\n",
+        "\n",
+        "rf_params = {\n",
+        "    'model__n_estimators': [100],\n",
+        "    'model__max_depth': [None, 20],\n",
+        "    'model__min_samples_split': [2, 10]\n",
+        "}\n",
+        "\n",
+        "rf_cv = GridSearchCV(\n",
+        "    rf,\n",
+        "    rf_params,\n",
+        "    cv=3,\n",
+        "    scoring='neg_root_mean_squared_error',\n",
+        "    n_jobs=-1\n",
+        ")\n",
+        "\n",
+        "rf_cv.fit(X_train, y_train)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 207
+        },
+        "id": "4F5fPo0X38ru",
+        "outputId": "919b53d7-2fce-4500-f768-654e377bb4b2"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "name 'Pipeline' is not defined",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m/tmp/ipython-input-1207170870.py\u001b[0m in \u001b[0;36m<cell line: 0>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;31m##Non-Linear Model: Random Forest\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      2\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 3\u001b[0;31m rf = Pipeline(steps=[\n\u001b[0m\u001b[1;32m      4\u001b[0m     \u001b[0;34m(\u001b[0m\u001b[0;34m'preprocessor'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mpreprocessor\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m     \u001b[0;34m(\u001b[0m\u001b[0;34m'model'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mRandomForestRegressor\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mrandom_state\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;36m42\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mNameError\u001b[0m: name 'Pipeline' is not defined"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Jb-j9L5tHYTw"
+      },
+      "source": [
+        "### Evaluation\n",
+        "\n",
+        "With some modeling accomplished, we aim to reflect on what we identify as a high-quality model and what we are able to learn from this.  We should review our business objective and explore how well we can provide meaningful insight into drivers of used car prices.  Your goal now is to distill your findings and determine whether the earlier phases need revisitation and adjustment or if you have information of value to bring back to your client."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "In the Evaluation phase of CRISP-DM, the performance and usefulness of the selected regression model(s) are assessed in the context of the original business objective: identifying the key drivers of used car prices. Model performance should be evaluated using appropriate metrics such as RMSE, MAE, and R² on a held-out test set to confirm that predictions generalize well to unseen data. A high-quality model is one that demonstrates strong predictive accuracy while remaining stable across cross-validation folds.\n",
+        "\n",
+        "Beyond accuracy, the model’s interpretability is critically reviewed to determine whether it provides actionable business insight. Feature coefficients or importance measures are analyzed to identify which variables (e.g., vehicle age, mileage, manufacturer, or condition) have the greatest influence on price. These findings are compared against business expectations to validate assumptions or uncover new insights about pricing behavior in the used car market.\n",
+        "\n",
+        "Finally, the evaluation considers whether limitations in data quality, feature representation, or model assumptions may have constrained results. If significant gaps or biases are identified—such as missing influential variables or underperforming segments—the earlier CRISP-DM phases may need to be revisited for additional data preparation or feature engineering. If the model meets both performance and interpretability criteria, the insights can be confidently communicated to stakeholders as data-driven evidence of the primary drivers of used car prices, supporting informed decision-making."
+      ],
+      "metadata": {
+        "id": "Xc5KvTs612NL"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "iZbs-2KjHYTw"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "D90BKGnsHYTw"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "pPiz3g9IHYTx"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "LGqvsjgyHYTx"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "NhuRaL7cHYTx"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "830P4JeSHYTx"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "xsU7fBDuHYTx"
+      },
+      "source": [
+        "### Recommendation\n",
+        "\n",
+        "Now that we've settled on our models and findings, it is time to deliver the information to the client.  You should organize your work as a basic report that details your primary findings.  Keep in mind that your audience is a group of used car dealers interested in fine-tuning their inventory."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "In the Recommendation phase of CRISP-DM, the results of the analysis are packaged and communicated in a clear, business-focused report tailored to used car dealers. The report should begin with an executive summary that briefly outlines the objective, the modeling approach, and the key findings, emphasizing how the results can support inventory and pricing decisions.\n",
+        "\n",
+        "The main body of the report should present the primary drivers of used car prices identified by the model, such as vehicle age, mileage, brand, condition, and fuel type. These findings should be translated into practical insights—for example, which vehicle characteristics are associated with higher resale value or faster price depreciation—using clear visualizations and non-technical explanations. Model performance metrics can be included at a high level to build credibility, without overwhelming the audience with technical detail.\n",
+        "\n",
+        "Finally, the report should conclude with actionable recommendations for dealers, such as guidance on which vehicle types to prioritize when acquiring inventory or how to adjust pricing strategies based on key attributes. Limitations and assumptions should be transparently noted, along with suggestions for future improvements. By framing the results around business impact rather than technical complexity, the deployment ensures that the analysis delivers meaningful value to the client and supports informed decision-making."
+      ],
+      "metadata": {
+        "id": "Poh53pjZ2Hz0"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "afph4b4hHYTy"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "di0aSX7eHYTy"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "j-KRMEmsHYTz"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "vRnT9UwXHYTz"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "VpjVEhLRHYTz"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "OZXFZVU6HYTz"
+      },
+      "outputs": [],
+      "source": []
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "5m8kKzH7HYT0"
+      },
+      "outputs": [],
+      "source": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.8.8"
+    },
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
