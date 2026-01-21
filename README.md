@@ -52,10 +52,14 @@ Acquisition Strategy:
 
 Prioritize newer, low-mileage vehicles.
 Focus on brands with strong resale premiums.
+
+
 Pricing Strategy:
 
 Use mileage and age tiers to set discounts.
 Apply condition premiums consistently to justify reconditioning costs.
+
+
 Inventory Mix:
 
 Stock more SUVs and trucks (higher average resale).
