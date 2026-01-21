@@ -81,15 +81,7 @@ Why These Metrics?
 
 RMSE highlights how well the model handles large deviations (important for luxury or high-value vehicles).
 MAE provides a straightforward measure of the average prediction error in dollars, making it intuitive for dealership stakeholders.
-📈 Model Comparison
 
-Model	RMSE (Price, $)	MAE (Price, $)
-XGBoost	4,746.60	2,828.19
-GradientBoosting	5,809.49	3,550.30
-Linear Regression	6,348.67	3,982.93
-Ridge (alpha=10)	6,370.66	3,986.02
-Lasso (alpha=0.001)	6,461.85	4,071.03
-✅ XGBoost is the most accurate, reducing pricing error by ~$1,500 compared to linear models.
 
 ✅ Interpretation:
 
@@ -98,25 +90,3 @@ Gradient Boosting performs reasonably well but with ~20% higher error.
 Linear, Ridge, and Lasso models are less effective at capturing non-linear depreciation and brand effects.
 
 
-📂 Project Organization
-
-UsedCarPricePrediction/ │ ├── notebooks/ │ └── used_car_price_prediction.ipynb # Main Jupyter notebook with analysis & models │ ├── data/ │ └── vehicles.csv # Raw dataset (cleaned during preprocessing) │ ├── reports/ │ └── README.md # Project summary and findings │ └── requirements.txt # Python dependencies
-
-├── data/
-│ └── vehicles.csv # Source Data
-│
-├── Notebook/
-│ └── WhatDrivesCarPrice.ipynb # Jupyter Notebook (analysis + visualizations)
-│
-├── README.md
-
-No unnecessary files are included.
-Directories and files are named clearly and placed in appropriate locations.
-
-
-📓 Jupyter Notebook
-
-The notebook WhatDrivesCarPrice.ipynb contains:
-
-Clear headings and explanatory text.
-Step-by-step workflow: preprocessing, model building, evaluation, and visualization.
