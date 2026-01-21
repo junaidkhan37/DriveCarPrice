@@ -63,24 +63,11 @@ Adjust mix by region (e.g., trucks in Texas, hybrids in California).
 
 
 
-📏 Evaluation Metrics
+📏 Evaluation Metrics and XGBoost Performance
 
-To assess model performance, we used two standard regression metrics:
 
-RMSE (Root Mean Squared Error):
-Measures the square root of the average squared differences between predicted and actual prices.
-
-Penalizes larger errors more heavily.
-Lower RMSE indicates better overall accuracy.
-MAE (Mean Absolute Error):
-Measures the average absolute differences between predicted and actual prices.
-
-Easier to interpret (average dollar error).
-Less sensitive to outliers compared to RMSE.
-Why These Metrics?
-
-RMSE highlights how well the model handles large deviations (important for luxury or high-value vehicles).
-MAE provides a straightforward measure of the average prediction error in dollars, making it intuitive for dealership stakeholders.
+To evaluate model performance, we used RMSE and MAE, two standard regression metrics. RMSE emphasizes larger prediction errors and is particularly important for identifying poor performance on high-priced vehicles, while MAE represents the average absolute prediction error and is easier to interpret in business terms.
+Among all tested models, XGBoost achieved the lowest RMSE and MAE and the highest R², indicating the strongest overall predictive accuracy and the best fit to the data. This suggests that XGBoost was more effective at capturing complex, non-linear relationships between vehicle characteristics and price compared to linear and standard ensemble models. As a result, XGBoost was selected as the final model for analyzing price drivers and generating business insights.
 
 
 ✅ Interpretation:
