@@ -9,9 +9,13 @@ What Drives the Price of a Car?
 
 
 
+
+
 Dataset summary
 
 This dataset contains listings for used vehicles and is structured to support price prediction and resale-value analysis. The target variable is price (sale price), and the table includes both numeric and categorical features that capture vehicle attributes, condition, and location.
+
+
 
 Key features
 year — model year (used to derive vehicle age)
@@ -32,6 +36,8 @@ Primary predictors observed: age, mileage, condition, and manufacturer — these
 
 
 
+
+
 📊 Summary of Findings
 
 Best-performing model: XGBoost, with the lowest error (RMSE = 0.3384, R2 = 0.8323).
@@ -44,6 +50,8 @@ Business impact:
 Prioritize newer, low-mileage vehicles.
 Invest in reconditioning when uplift > cost.
 Adjust inventory mix by region and vehicle type (SUVs/trucks command higher resale).
+
+
 
 
 🛠 Dealer-Facing Recommendations
@@ -67,11 +75,15 @@ Adjust mix by region (e.g., trucks in Texas, hybrids in California).
 
 
 
+
+
 📏 Evaluation Metrics and XGBoost Performance
 
 
 To evaluate model performance, we used RMSE and MAE, two standard regression metrics. RMSE emphasizes larger prediction errors and is particularly important for identifying poor performance on high-priced vehicles, while MAE represents the average absolute prediction error and is easier to interpret in business terms.
 Among all tested models, XGBoost achieved the lowest RMSE and MAE and the highest R², indicating the strongest overall predictive accuracy and the best fit to the data. This suggests that XGBoost was more effective at capturing complex, non-linear relationships between vehicle characteristics and price compared to linear and standard ensemble models. As a result, XGBoost was selected as the final model for analyzing price drivers and generating business insights.
+
+
 
 
 ✅ Interpretation:
